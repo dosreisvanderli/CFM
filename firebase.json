@@ -1,0 +1,36 @@
+{
+  "hosting": {
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "headers": [
+      {
+        "source": "/manifest.json",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      },
+      {
+        "source": "/pwa-*.png",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "image/png"
+          }
+        ]
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "!/@(manifest.json|sw.js|registerSW.js|workbox-*.js|pwa-*.png|logo_*.png)",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
