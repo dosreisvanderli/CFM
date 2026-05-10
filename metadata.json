@@ -1,0 +1,6 @@
+{
+  "name": "CFM Mobile",
+  "description": "Controle Financeiro Mensal Offline-First PWA com sincronização em nuvem.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["pwa", "offline-first"]
+}
