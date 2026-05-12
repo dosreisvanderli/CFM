@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with donation prompt info",
+      "type": "object",
+      "properties": {
+        "lastDonationPromptDate": {
+          "type": "number",
+          "description": "Timestamp (ms) of the last time the donation prompt was shown"
+        }
+      }
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "A financial transaction for the user",
+      "type": "object",
+      "properties": {
+        "description": { "type": "string" },
+        "amount": { "type": "string" },
+        "category": { "type": "string" },
+        "type": { "type": "string", "enum": ["INCOME", "EXPENSE"] },
+        "status": { "type": "string", "enum": ["PENDENTE", "PAGO"] },
+        "day": { "type": "number" },
+        "month": { "type": "number" },
+        "year": { "type": "number" },
+        "paidAtMonth": { "type": "number", "nullable": true },
+        "paidAtYear": { "type": "number", "nullable": true },
+        "groupId": { "type": "string", "nullable": true }
+      },
+      "required": ["description", "amount", "category", "type", "status", "day", "month", "year"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile"
+    },
+    "users/{userId}/transactions/{transactionId}": {
+      "schema": { "$ref": "#/entities/Transaction" },
+      "description": "User's financial transactions"
+    }
+  }
+}
